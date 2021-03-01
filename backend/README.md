@@ -1,6 +1,6 @@
-# ClothingStore
+# ClothingStore Backend
 
-A simple ClothingStore app
+REST API for ClothingStore app
 
 ## Stack
 
