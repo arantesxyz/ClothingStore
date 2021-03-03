@@ -17,7 +17,7 @@ export default class AuthService implements IAuthService {
         })
       }
     } catch {
-      throw HttpError.FORBIDDEN("Email and password doesn't match")
+      throw HttpError.FORBIDDEN("Email and password don't match!")
     }
   }
 }
