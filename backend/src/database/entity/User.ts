@@ -12,6 +12,8 @@ export default class User {
   @Column()
   hash: string
 
-  @Column()
+  @Column({
+    default: false
+  })
   isAdmin: boolean
 }
