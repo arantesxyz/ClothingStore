@@ -1,21 +1,15 @@
-import { IUserRepository, IUserService } from './structures'
+import { IUser, IUserRepository, IUserService } from './structures'
 import HttpError from '../../errors/HttpError'
+import { IAuth } from '../auth/structures'
+export default class UserService implements IUserService {
+  constructor(private userRepository: IUserRepository) {}
 
-import isEmail from 'validator/lib/isEmail'
-
-export default (userRepository: IUserRepository): IUserService => {
-  return {
-    async create({ email, password }) {
-      if (!isEmail(email)) {
-        throw HttpError.BAD_REQUEST('Invalid email format!')
-      }
-
-      const alreadyExists = await userRepository.emailExists(email)
-      if (alreadyExists) {
-        throw HttpError.BAD_REQUEST('Email already exists!')
-      }
-
-      return await userRepository.create({ email, password })
+  async create({ email, password }: IAuth): Promise<IUser> {
+    const alreadyExists = await this.userRepository.emailExists(email)
+    if (alreadyExists) {
+      throw HttpError.CONFLICT('Email already exists!')
     }
+
+    return await this.userRepository.create({ email, password })
   }
 }

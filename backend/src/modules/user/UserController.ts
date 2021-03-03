@@ -1,24 +1,15 @@
-import HttpError from '../../errors/HttpError'
-import checkEmpty from '../../utils/checkEmpty'
-import typeValidator from '../../utils/typeValidator'
+import { Request, Response } from 'express'
+
+import validadeIAuth from '../auth/ValidadeIAuth'
 import { IUserController, IUserService } from './structures'
 
-export default (userService: IUserService): IUserController => {
-  return {
-    async create(req, res) {
-      const { email, password } = req.body
-      typeValidator(email, 'string', 'email')
-      typeValidator(password, 'string', 'password')
+export default class UserController implements IUserController {
+  constructor(private userService: IUserService) {}
 
-      const isEmpty = checkEmpty(HttpError.BAD_REQUEST, {
-        ignore_whitespace: true
-      })
+  async create(req: Request, res: Response): Promise<void> {
+    validadeIAuth(req.body)
 
-      isEmpty(email, 'email')
-      isEmpty(password, 'password')
-
-      const user = await userService.create({ email, password })
-      res.json(user)
-    }
+    const user = await this.userService.create(req.body)
+    res.json(user)
   }
 }
