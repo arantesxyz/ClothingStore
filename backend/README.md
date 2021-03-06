@@ -22,7 +22,9 @@ yarn
 ```
 
 ## Building and running with docker
-You might wanna run migrations first. After installing the repo run:
+You might wanna run migrations first.
+Rename `.env.example` to `.env` and put your database info and jwt secret.
+Run:
 ```
 yarn typeorm migration:run
 ```
@@ -50,7 +52,7 @@ Replace `<tagname>` with a name for the docker image.
 ## Scripts
 
 - dev   -> Starts the app in development mode
-- typeorm   -> Run typeorm using ts-node
+- typeorm   -> Run typeorm cli using ts-node
 <!-- - test  -> Run the tests using [jest](https://jestjs.io/). -->
 
 ## Contributing
