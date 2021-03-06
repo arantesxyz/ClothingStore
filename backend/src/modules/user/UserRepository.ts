@@ -5,7 +5,7 @@ import { IUser, IUserRepository } from './structures'
 import HttpError from '../../errors/HttpError'
 import User from '../../database/entity/User'
 import { IAuth } from '../auth/structures'
-import Constants from '../../utils/constants'
+import Constants from '../../utils/Constants'
 import { Repository } from 'typeorm'
 
 export default class UserRepository

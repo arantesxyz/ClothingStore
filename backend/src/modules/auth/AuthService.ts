@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import { AuthenticatedUser, IAuth, IAuthService } from './structures'
 import HttpError from '../../errors/HttpError'
 import { IUserRepository } from '../user/structures'
-import Constants from '../../utils/constants'
+import Constants from '../../utils/Constants'
 
 export default class AuthService implements IAuthService {
   constructor(private userRepository: IUserRepository) {}
