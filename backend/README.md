@@ -22,7 +22,7 @@ yarn
 ```
 
 ## Building and running with docker
-You might wanna run migrations first, after installing the repo run:
+You might wanna run migrations first. After installing the repo run:
 ```
 yarn typeorm migration:run
 ```
