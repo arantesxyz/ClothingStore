@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import HttpErrors, { IHttpError } from '../errors/HttpError'
+import HttpError, { IHttpError } from '../errors/HttpError'
 
 export default (
   err: IHttpError,
@@ -8,7 +8,7 @@ export default (
   next: NextFunction
 ): void => {
   if (!err || !err.status || !err.message) {
-    err = HttpErrors.INTERNAL_SERVER_ERROR()
+    err = HttpError.INTERNAL_SERVER_ERROR()
   }
 
   res.status(err.status).json(err)
