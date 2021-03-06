@@ -1,6 +1,7 @@
 import { IUser, IUserRepository, IUserService } from './structures'
 import HttpError from '../../errors/HttpError'
 import { IAuth } from '../auth/structures'
+
 export default class UserService implements IUserService {
   constructor(private userRepository: IUserRepository) {}
 
